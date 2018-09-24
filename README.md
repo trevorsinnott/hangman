@@ -1,8 +1,27 @@
 # Hangman
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hangman`. To experiment with that code, run `bin/console` for an interactive prompt.
+Classes:
+ - Player
+ - Word
+  - Picked by player
+  - Else randomly picked
+ - Guesses
+  - Correct
+  - Incorrect
+ - Board
+  - Hangman
+  - Revealed letters
+  - Hidden letters
+  - Guessed letters
+ - Game
 
-TODO: Delete this and the text above, and describe your gem
+Hangman can be played by one or more humans on the command line. The game board
+shows a hangman, any guessed letters and a spot for each letter in the word.
+The hangman is drawn one part at a time when the player makes an incorrect
+guess. If the player correctly guesses a letter in the word each instance of
+that letter is revealed. They player wins by revealing the entire word before
+the entire hangman is drawn. If the entire hangman is drawn before all of the
+letters are exposed, the player looses.
 
 ## Installation
 

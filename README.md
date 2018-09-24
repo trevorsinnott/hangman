@@ -1,11 +1,11 @@
 # Hangman
 
 Classes:
- - Player
- - Word
+ - player
+ - secret_word
   - Picked by player
   - Else randomly picked
- - Guesses
+ - guesses
   - Correct
   - Incorrect
  - Board

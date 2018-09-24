@@ -6,7 +6,7 @@ module Hangman
     end
 
     def random_word
-      "some word"
+      File.readlines("./lib/5desk.txt").sample
     end
   end
 end

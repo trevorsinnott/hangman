@@ -8,10 +8,13 @@ module Hangman
         secret_word = SecretWord.new(word)
         expect(secret_word.word).to eq "some word"
       end
+    end
 
-      it "assigns random word when no custom input is given" do
+    context "#random_word" do
+      it "assigns a string to the @word variable if no string is initially given" do
         secret_word = SecretWord.new
-        expect(secret_word.word).to eq "some word"
+        word_string = secret_word.word.to_s
+        expect(secret_word.word).to eq word_string
       end
     end
   end

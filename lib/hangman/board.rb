@@ -12,23 +12,19 @@ module Hangman
     end
 
     def check_letter(letter)
-      @word.include?(letter) ? hit : @miss_count += 1
+      @word.include?(letter) ? hit(letter) : @miss_count += 1
     end
 
     def game_over
-      if loser?
-        return :loser
-      elsif winner?
-        return :winner
-      else
-        false
-      end
+      return :loser if loser?
+      return :winner if winner?
+      false
     end
 
     private
 
-    def hit
-      return "hit"
+    def hit(guess)
+      @word.split("").each_with_index { |letter, i| @reveal[i] = guess if @word[i] == guess }
     end
 
     def loser?

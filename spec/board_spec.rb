@@ -35,6 +35,12 @@ module Hangman
         board.check_letter("b")
         expect(board.miss_count).to eq 1
       end
+
+      it "adds letter to the @reveal array at the correct index if letter is in @word" do
+        board = Board.new("abc")
+        board.check_letter("b")
+        expect(board.reveal).to eq ["_", "b", "_"]
+      end
     end
 
     context "#game_over" do
@@ -44,9 +50,17 @@ module Hangman
       end
 
       it "returns :winner if @reveal is complete" do
-        board = Board.new("abc")
-        allow(board).to receive_messages(reveal: ["a", "b", "c"])
+        board = Board.new("a")
+        board.check_letter("a")
         expect(board.game_over).to eq :winner
+      end
+
+      it "returns :loser if @miss_count is 6 or greater" do
+        board = Board.new("something")
+        6.times do
+          board.check_letter("z")
+        end
+        expect(board.game_over).to eq :loser
       end
     end
   end

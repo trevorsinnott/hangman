@@ -13,11 +13,6 @@ module Hangman
         expect(board.word).to eq "something"
       end
 
-      it "intializes @word to empty string if no string given" do
-        board = Board.new
-        expect(board.word).to eq ""
-      end
-
       it "initializes @reveal to be an array with the same length as @word" do
         board = Board.new("abc")
         expect(board.reveal.length).to eq board.word.length

@@ -13,6 +13,21 @@ module Hangman
         expect(board.word).to eq "something"
       end
 
+      it "initializes @word to a random string when no argument given" do
+        board = Board.new
+        expect(board.word.is_a?(String)).to eq true
+      end
+
+      it "initializes @word to a random string that is > 4" do
+        board = Board.new
+        expect(board.word.length).to be > 4
+      end
+
+      it "initializes @word to a random string that is < 13" do
+        board = Board.new
+        expect(board.word.length).to be < 13
+      end
+
       it "initializes @reveal to be an array with the same length as @word" do
         board = Board.new("abc")
         expect(board.reveal.length).to eq board.word.length

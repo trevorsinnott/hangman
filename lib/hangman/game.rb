@@ -9,21 +9,36 @@ module Hangman
     end
 
     def play
-      solicit_guess
+      while !board.game_over
+        solicit_guess
+        board.check_letter(gets.chomp.downcase)
+      end
+      board.game_over == :winner ? you_win : you_lose
     end
 
     def solicit_guess
-      puts "#{@player.name}, please guess a letter"
-      get_guess
+      puts "#{@player.name} has #{6 - board.miss_count} guesses left"
+      puts board.reveal.join("")
+      puts "Please guess a letter"
     end
 
-    def get_guess(guess = gets.chomp)
-      if guess.length == 1
-        @board.check_letter(guess)
-      else
-        puts "You can't guess that"
-        solicit_guess
-      end
+    private
+
+    def stick_figure
+      "----  "
+      "|  o  "
+      "| /|\ "
+      "| / \ "
+      "|     "
+      "======"
+    end
+
+    def you_win
+      :win
+    end
+
+    def you_lose
+      :lose
     end
   end
 end

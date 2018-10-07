@@ -4,15 +4,25 @@ module Hangman
     attr_reader :word
     attr_reader :miss_count
     attr_reader :reveal
+    attr_reader :guesses
 
     def initialize(word = random_word)
       @miss_count = 0
       @word = word
       @reveal = Array.new(@word.length, "_")
+      @guesses = Array.new
     end
 
     def check_letter(letter)
-      @word.include?(letter) ? hit(letter) : @miss_count += 1
+      if @guesses.include?(letter)
+        @miss_count += 1
+      elsif @word.include?(letter)
+        hit(letter)
+        @guesses << letter
+      else
+        @miss_count += 1
+        @guesses << letter
+      end
     end
 
     def game_over

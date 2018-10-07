@@ -12,5 +12,19 @@ module Hangman
         expect(game.board.is_a?(Board)).to eq true
       end
     end
+
+    context "#play" do
+      it "returns :win if you win" do
+        game = Game.new(Player.new("Someone"), Board.new("aa"))
+        allow_any_instance_of(Game).to receive_messages(gets: 'a')
+        expect(game.play).to eq :win
+      end
+
+      it "returns :lose if you loose" do
+        game = Game.new(Player.new("Someone"), Board.new("b"))
+        allow_any_instance_of(Game).to receive_messages(gets: 'a')
+        expect(game.play).to eq :lose
+      end
+    end
   end
 end

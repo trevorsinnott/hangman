@@ -51,6 +51,12 @@ module Hangman
         board.check_letter("b")
         expect(board.reveal).to eq ["_", "b", "_"]
       end
+
+      it "adds guessed letter to the @guesses array" do
+        board = Board.new
+        board.check_letter("a")
+        expect(board.guesses).to eq ["a"]
+      end
     end
 
     context "#game_over" do

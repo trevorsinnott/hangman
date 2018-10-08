@@ -1,0 +1,23 @@
+--- !ruby/object:Hangman::Board
+miss_count: 1
+word: unreadiness
+reveal:
+- _
+- _
+- _
+- _
+- _
+- _
+- _
+- _
+- _
+- _
+- _
+guesses:
+- l
+- ly
+- j
+- k
+- u
+- t
+- w

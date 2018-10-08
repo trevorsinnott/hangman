@@ -1,0 +1,14 @@
+--- !ruby/object:Hangman::Board
+miss_count: 1
+word: verbiage
+reveal:
+- _
+- _
+- _
+- _
+- _
+- _
+- _
+- _
+guesses:
+- l

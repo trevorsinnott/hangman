@@ -1,4 +1,4 @@
-require "hangman/version"
+require_relative "hangman/version"
 
 module Hangman
 end

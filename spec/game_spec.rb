@@ -15,14 +15,16 @@ module Hangman
 
     context "#play" do
       it "returns :win if you win" do
-        game = Game.new(Player.new("Someone"), Board.new("aa"))
-        allow_any_instance_of(Game).to receive_messages(gets: 'a')
+        board = Board.new
+        game = Game.new(Player.new("Someone"), board)
+        allow(board).to receive_messages(game_over: :winner)
         expect(game.play).to eq :win
       end
 
-      it "returns :lose if you loose" do
-        game = Game.new(Player.new("Someone"), Board.new("b"))
-        allow_any_instance_of(Game).to receive_messages(gets: 'a')
+      it "returns :lose if you lose" do
+        board = Board.new
+        game = Game.new(Player.new("Someone"), board)
+        allow(board).to receive_messages(game_over: :loser)
         expect(game.play).to eq :lose
       end
     end

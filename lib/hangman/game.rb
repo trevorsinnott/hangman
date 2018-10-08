@@ -12,6 +12,7 @@ module Hangman
       while !board.game_over
         solicit_guess
         board.check_letter(gets.chomp.downcase)
+        puts board.guesses.join(" - ")
       end
       board.game_over == :winner ? you_win : you_lose
     end
@@ -34,11 +35,11 @@ module Hangman
     end
 
     def you_win
-      :win
+      puts "You win!"
     end
 
     def you_lose
-      :lose
+      puts "You lose."
     end
   end
 end

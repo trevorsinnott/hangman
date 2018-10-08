@@ -15,7 +15,7 @@ module Hangman
 
     def check_letter(letter)
       if @guesses.include?(letter)
-        @miss_count += 1
+        puts "That letter has already been guessed."
       elsif @word.include?(letter)
         hit(letter)
         @guesses << letter

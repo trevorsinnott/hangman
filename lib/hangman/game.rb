@@ -17,7 +17,15 @@ module Hangman
         menu
         stick_figure
         solicit_guess
-        board.check_letter(parse_input(gets.chomp.downcase))
+        input = gets.chomp.downcase
+        case input
+        when "1"
+          solicit_load
+        when "2"
+          solicit_save
+        else
+          board.check_letter(parse_input(input))
+        end
       end
       board.game_over == :winner ? you_win : you_lose
     end
@@ -40,12 +48,23 @@ module Hangman
 
     private
 
+    def solicit_load
+      puts "Whose game would you like to load?"
+      load_game(gets.chomp)
+    end
+
     def save_game
       yaml = YAML::dump(@board)
       game_file = File.open("lib/saved_games/#{@player.name}.yaml", "w")
       game_file.puts yaml
       game_file.close
       puts "Game saved"
+    end
+
+    def load_game(player_name)
+      save_file = File.open("lib/saved_games/#{player_name}.yaml", "r")
+      @board = YAML::load(save_file)
+      play
     end
 
     def parse_input(input)
